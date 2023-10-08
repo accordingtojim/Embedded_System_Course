@@ -30,15 +30,15 @@
 #define SIZE (40)
 
 //Global variable
-unsigned int *prova;
+unsigned int prova;
 
 //Function declaration
 int * print_statistics(int *array, int length_array);
 void print_array(int *array, int length_array);
 int find_median(int *array, int length_array);
 int find_mean(int *array, int length_array);
-int find_maximum(int *array, int length_array);
-int find_minimum(int *array, int length_array);
+unsigned int find_maximum(unsigned int *array, int length_array);
+unsigned int find_minimum(unsigned int *array, int length_array);
 unsigned int * sort_array(unsigned int  *array, int length_array);
 
 void main() {
@@ -49,9 +49,10 @@ unsigned int test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                             201,   6,  12,  60,   8,   2,   5,  67,
                               7,  87, 250, 230,  99,   3, 100,  90};
 int s;
-sort_array(test,40);
-prova = test;
-printf("%u", *(prova));
+//sort_array(test,40);
+
+printf("%u",find_maximum(test,40));
+printf("%u",find_minimum(test,40));
 
 }
 
@@ -68,7 +69,7 @@ int find_mean(int *ptr, int length_array) //function definition
 return sum / counter;
 }
 
-unsigned int * sort_array(unsigned int array[], int length_array) //function definition
+unsigned int * sort_array(unsigned int array[], int length_array) //decreasing order
 { 
   int i,j,swap; 
   for (i = 0; i < length_array; i++)
@@ -88,3 +89,17 @@ unsigned int * sort_array(unsigned int array[], int length_array) //function def
     }
   }  
 }
+
+unsigned int find_maximum(unsigned int *array, int length_array)
+{
+ sort_array(array,length_array);
+ return *array;
+ //return *(sort_array(array,length_array));   ->  this somehow gives segmentation fault, so split in two commands to make it run
+}
+
+unsigned int find_minimum(unsigned int *array, int length_array)
+{
+ sort_array(array,length_array);
+ return *(array+length_array-1);
+}
+
