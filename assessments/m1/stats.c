@@ -26,18 +26,20 @@
 #include <stdio.h>
 #include "stats.h"
 
-/* Size of the Data Set */
+//Constant variable
 #define SIZE (40)
-unsigned int *prova[40]={};
 
+//Global variable
+unsigned int prova;
+
+//Function declaration
 int * print_statistics(int *array, int length_array);
 void print_array(int *array, int length_array);
 int find_median(int *array, int length_array);
 int find_mean(int *array, int length_array);
-int find_maximum(int *array, int length_array);
-int find_minimum(int *array, int length_array);
+unsigned int find_maximum(unsigned int *array, int length_array);
+unsigned int find_minimum(unsigned int *array, int length_array);
 unsigned int * sort_array(unsigned int  *array, int length_array);
-
 
 void main() {
 
@@ -47,18 +49,14 @@ unsigned int test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                             201,   6,  12,  60,   8,   2,   5,  67,
                               7,  87, 250, 230,  99,   3, 100,  90};
 int s;
+//sort_array(test,40);
 
-*prova = sort_array(test,40);
-printf("%p",prova[3]);
-
-
-
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+printf("%u",find_maximum(test,40));
+printf("%u",find_m(test,40));
 
 }
 
-/* Add other Implementation File Code Here */
+//Function definition
 int find_mean(int *ptr, int length_array) //function definition
 { 
   int sum;
@@ -71,25 +69,36 @@ int find_mean(int *ptr, int length_array) //function definition
 return sum / counter;
 }
 
-unsigned int * sort_array(unsigned int *ptr, int length_array) //function definition
+unsigned int * sort_array(unsigned int array[], int length_array) //decreasing order
 { 
-  int i,j,swap;
-  
+  int i,j,swap; 
   for (i = 0; i < length_array; i++)
   {
-    for (j = 1; j < length_array; j++)
+    for (j = i+1; j < length_array; j++)
     {
-      if (ptr[i] > ptr[j])
+      if (array[i] > array[j])
       {
       continue;
       }
       else
       {
-      swap = ptr[i];
-      ptr[i] = ptr[j];
-      ptr[j] = swap;
+      swap = array[i];
+      array[i] = array[j];
+      array[j] = swap;
       }
-  }
+    }
+  }  
 }
-return ptr;
+
+unsigned int find_maximum(unsigned int *array, int length_array)
+{
+ sort_array(array,length_array);
+ return *array;
+ //return *(sort_array(array,length_array));   ->  this somehow gives segmentation fault, so split in two commands to make it run
+}
+
+unsigned int find_minimum(unsigned int *array, int length_array)
+{
+ sort_array(array,length_array);
+ return *(array+length_array-1);
 }
