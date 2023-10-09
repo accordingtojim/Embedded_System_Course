@@ -22,7 +22,13 @@
 #define __STATS_H__
 
 /* Add Your Declarations and Function Comments here */ 
-
+int * print_statistics(int *array, int length_array);
+void print_array(int *array, int length_array);
+int find_median(int *array, int length_array);
+int find_mean(int *array, int length_array);
+unsigned int find_maximum(unsigned int *array, int length_array);
+unsigned int find_minimum(unsigned int *array, int length_array);
+unsigned int * sort_array(unsigned int  *array, int length_array);
 /**
  * @brief <Add Brief Description of Function Here>
  *

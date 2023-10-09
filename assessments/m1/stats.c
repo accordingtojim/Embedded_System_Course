@@ -19,10 +19,6 @@
  *
  */
 
-
-
-
-
 #include <stdio.h>
 #include "stats.h"
 
@@ -33,13 +29,7 @@
 unsigned int prova;
 
 //Function declaration
-int * print_statistics(int *array, int length_array);
-void print_array(int *array, int length_array);
-int find_median(int *array, int length_array);
-int find_mean(int *array, int length_array);
-unsigned int find_maximum(unsigned int *array, int length_array);
-unsigned int find_minimum(unsigned int *array, int length_array);
-unsigned int * sort_array(unsigned int  *array, int length_array);
+
 
 void main() {
 
@@ -52,7 +42,7 @@ int s;
 //sort_array(test,40);
 
 printf("%u",find_maximum(test,40));
-printf("%u",find_m(test,40));
+
 
 }
 
